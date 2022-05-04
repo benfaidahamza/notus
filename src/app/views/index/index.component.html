@@ -1,0 +1,45 @@
+<app-index-navbar></app-index-navbar>
+<section class="header relative pt-16 items-center flex h-screen max-h-860-px">
+  <div class="container mx-auto items-center flex flex-wrap">
+    <div class="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4">
+      <div class="pt-32 sm:pt-0">
+        <h2 class="font-semibold text-4xl text-sm" >
+          Workflow Thinline<br>
+        </h2>
+        <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+          
+          <a
+            class="text-blueGray-600"
+            target="_blank"
+          >
+            
+          </a>
+          Vous permet de piloter vos processus de travail, d'avoir une vision claire en tout temps sur leur performance et de collaborer de manière efficace.
+          Augmentez l'efficacité de vos équipes grâce à l'automatisation de vos processus en interne.
+        </p>
+        <div class="mt-12">
+          <!--target="_blank"-->
+          <a
+           [routerLink]="['/auth/login']"
+            class=" text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-600 active:bg-red-700 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
+          >
+          Se connecter
+          </a>
+          <a
+            [routerLink]="['/auth/register']"
+            class=" ml-1 text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 text-blueGray-500 active:bg-red-700 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
+          >
+          S'inscrire
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <img
+    class="absolute top-0 b-auto right-0 pt-16 sm:w-6/12 -mt-48 sm:mt-0 w-10/12 max-h-860-px"
+    src="assets/img/pattern_react.png"
+    alt="..."
+  />
+</section>
+<app-footer></app-footer>
