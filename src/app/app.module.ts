@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
+import { FormsModule } from "@angular/forms";
 
 // layouts
 import { AdminComponent } from "./layouts/admin/admin.component";
@@ -43,6 +44,7 @@ import { PagesDropdownComponent } from "./components/dropdowns/pages-dropdown/pa
 import { NotificationDropdownComponent } from "./components/dropdowns/notification-dropdown/notification-dropdown.component";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -77,7 +79,7 @@ import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user
     RegisterComponent,
     IndexComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule,FormsModule,HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

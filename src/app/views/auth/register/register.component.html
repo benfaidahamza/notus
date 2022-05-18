@@ -12,33 +12,62 @@
             <br>
 
           </div>
-          <form>
+          <form #f="ngForm">
             <div class="relative w-full mb-3">
               <label
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                 htmlFor="grid-password"
               >
-                Name
+                First Name 
               </label>
               <input
-                type="email"
+        
                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                placeholder="Name"
-              />
-            </div>
+                placeholder="First Name"
+                name="first_name"
+                ngModel required  #a="ngModel"
+                />
+              </div>
+              <div  *ngIf= "a.invalid && a.touched" style="color:black; background-color: rgba(253, 51, 0, 0.4); text-align: center; border-radius: 2%;">
+               Veuillez remplir ce champ
+              </div>
 
             <div class="relative w-full mb-3">
               <label
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                 htmlFor="grid-password"
               >
-                Email
+                Last Name
               </label>
               <input
-                type="email"
                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                placeholder="Email"
+                placeholder="Last Name"
+                ngModel required  #r="ngModel"
+                name="last_name"
+                />
+              </div>
+              <div  *ngIf= "r.invalid && r.touched" style="color:black; background-color: rgba(253, 51, 0, 0.4); text-align: center; border-radius: 2%;">
+               Veuillez remplir ce champ
+              </div>
+
+            <div class="relative w-full mb-3">
+              <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                htmlFor="grid-password"
+              >
+                Login
+              </label>
+              <input
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                placeholder="email or Phone"
+                ngModel required  #e="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}"
+                name="email"
               />
+            </div>
+            <div  *ngIf="e.invalid && e.touched" style="color:black; background-color: rgba(253, 51, 0, 0.4); text-align: center; border-radius: 2%;">
+              <div *ngIf="e.errors.required">Veuillez remplir ce champ</div>
+              <div *ngIf="e.errors.pattern">Email non valide</div>
+              <div></div>
             </div>
 
             <div class="relative w-full mb-3">
@@ -52,9 +81,13 @@
                 type="password"
                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                 placeholder="Password"
+                name="Password" 
+                ngModel required  #p="ngModel"
               />
             </div>
-
+            <div  *ngIf= "p.invalid && p.touched" style="color:black; background-color: rgba(253, 51, 0, 0.4); text-align: center; border-radius: 2%;">
+             Veuillez remplir ce champ
+            </div>
             <div>
               <label class="inline-flex items-center cursor-pointer">
                 <input
@@ -75,6 +108,7 @@
               <button
                 class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                 type="button"
+                [disabled]="f.invalid"
               >
                 Create Account
               </button>

@@ -9,12 +9,11 @@
           <div class="text-blueGray-400 text-center mb-3 font-bold">
             <small> sign in with credentials</small>
           </div>
-          <form #f=""ngForm>
+          <form #f="ngForm"  (ngSubmit)="doLogin()">
             <div class="relative w-full mb-3">
               <label
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                 htmlFor="grid-password"
-                required ngModel #e="ngModel" pattern="[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z0-9]{2,4}" 
               >
                 Email
               </label>
@@ -22,9 +21,15 @@
                 type="email"
                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                 placeholder="Email"
+                name="username"
+                [(ngModel)]="user.username" required  #e="ngModel" pattern="[a-zA-Z0-9.]+@[a-zA-Z0-9]+.[a-zA-Z0-9]{2,4}" 
               />
             </div>
-
+            <div  *ngIf="e.invalid && e.touched" style="color:black; background-color: rgba(253, 51, 0, 0.4); text-align: center; border-radius: 2%;">
+              <div *ngIf="e.errors.required">Veuillez remplir ce champ</div>
+              <div *ngIf="e.errors.pattern">Email non valide</div>
+              <div></div>
+            </div>
             <div class="relative w-full mb-3">
               <label
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
@@ -36,7 +41,12 @@
                 type="password"
                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                 placeholder="Password"
+                name="password" 
+                [(ngModel)]="user.password" required  #p="ngModel"
               />
+            </div>
+            <div  *ngIf= "p.invalid && p.touched" style="color:black; background-color: rgba(253, 51, 0, 0.4); text-align: center; border-radius: 2%;">
+             Veuillez remplir ce champ
             </div>
             <div>
               <label class="inline-flex items-center cursor-pointer">
@@ -54,10 +64,12 @@
             <div class="text-center mt-6">
               <button
                 class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
-                type="button"
+                type="button" 
+                [disabled]="f.invalid" type="submit"
               >
                 Sign In
               </button>
+
             </div>
           </form>
         </div>
